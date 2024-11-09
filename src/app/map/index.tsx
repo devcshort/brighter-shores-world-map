@@ -36,9 +36,7 @@ export function Map() {
       center: [0, 0],
       minZoom: 1.5,
       maxZoom: 5,
-      attributionControl: {
-        customAttribution: "Brighter Shores Wiki",
-      },
+      attributionControl: false,
     });
 
     return () => {
