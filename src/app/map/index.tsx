@@ -1,10 +1,11 @@
 "use client";
-import { Map as LibreMap } from "maplibre-gl";
-import { useEffect, useRef } from "react";
+import { Map as LibreMap, NavigationControl } from "maplibre-gl";
+import { useEffect, useRef, useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 export function Map() {
   const bsmap = useRef(null);
+  const [coordinates, setCoordinates] = useState(["0", "0"]);
 
   useEffect(() => {
     if (!bsmap.current) return;
@@ -39,15 +40,28 @@ export function Map() {
       attributionControl: false,
     });
 
+    map.addControl(new NavigationControl({ showCompass: false }));
+
+    map.on("mousemove", (e) => {
+      const { lng, lat } = e.lngLat;
+      setCoordinates([lng.toFixed(4), lat.toFixed(4)]);
+    });
+
     return () => {
       map.remove();
     };
   }, []);
 
   return (
-    <div
-      ref={bsmap}
-      className="absolute top-0 bottom-0 left-0 right-0 w-full h-full"
-    ></div>
+    <>
+      <div
+        ref={bsmap}
+        className="absolute top-0 bottom-0 left-0 right-0 w-full h-full z-0"
+      ></div>
+
+      <div className="bg-white p-2 bottom-2 right-2 absolute text-black font-semibold text-sm flex items-center justify-center rounded-md shadow-md">
+        {coordinates.join(", ")}
+      </div>
+    </>
   );
 }
