@@ -3,3 +3,5 @@ export const APP_TITLE =
 export const APP_DESCRIPTION =
   "Explore every corner of Brighter Shores with our detailed interactive world map. Discover hidden locations, quest markers, and resource spots to enhance your adventure. Fast-loading and easy to use - perfect for both new players and veterans tracking their journey through the game." as const;
 export const BASE_URL = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+export const GITHUB_REPO_URL =
+  "https://github.com/devcshort/brighter-shores-world-map";
