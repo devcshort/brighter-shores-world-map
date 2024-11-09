@@ -7,8 +7,11 @@ export const metadata: Metadata = {
   description: APP_DESCRIPTION,
   openGraph: {
     title: APP_TITLE,
+    siteName: APP_TITLE,
     description: APP_DESCRIPTION,
     url: BASE_URL,
+    locale: "en_US",
+    type: "website",
     images: [
       {
         url: `${BASE_URL}/ogworldmap.png`,
