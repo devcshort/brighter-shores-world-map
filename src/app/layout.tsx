@@ -1,9 +1,22 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { APP_DESCRIPTION, APP_TITLE, BASE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Brighter Shores World Map",
-  description: "An interactible map for the world of Brighter Shores.",
+  title: APP_TITLE,
+  description: APP_DESCRIPTION,
+  openGraph: {
+    title: APP_TITLE,
+    description: APP_DESCRIPTION,
+    url: BASE_URL,
+    images: [
+      {
+        url: `${BASE_URL}/ogworldmap.png`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
