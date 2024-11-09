@@ -1,5 +1,5 @@
 "use client";
-import { Map as LibreMap, Marker, NavigationControl } from "maplibre-gl";
+import { Map as LibreMap, NavigationControl } from "maplibre-gl";
 import { useEffect, useRef, useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 
@@ -47,7 +47,7 @@ export function Map() {
       setCoordinates([lng.toFixed(4), lat.toFixed(4)]);
     });
 
-    new Marker().setLngLat([0, 0]).addTo(map);
+    // new Marker().setLngLat([0, 0]).addTo(map);
 
     return () => {
       map.remove();
