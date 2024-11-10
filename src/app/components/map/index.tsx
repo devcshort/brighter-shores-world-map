@@ -38,6 +38,8 @@ export function Map() {
       minZoom: 1.5,
       maxZoom: 5,
       attributionControl: false,
+      antialias: false,
+      renderWorldCopies: false,
     });
 
     map.addControl(new NavigationControl({ showCompass: false }));
@@ -47,7 +49,14 @@ export function Map() {
       setCoordinates([lng.toFixed(4), lat.toFixed(4)]);
     });
 
-    // new Marker().setLngLat([0, 0]).addTo(map);
+    map.on("load", () => {
+      const canvasElements = document.getElementsByTagName("canvas");
+      for (const canvas of canvasElements) {
+        canvas.style.imageRendering = "pixelated"; // Modern browsers
+        canvas.style.imageRendering = "-moz-crisp-edges"; // Firefox
+        canvas.style.imageRendering = "-webkit-crisp-edges"; // Safari
+      }
+    });
 
     return () => {
       map.remove();
